@@ -21,7 +21,7 @@ namespace Api.Repository
 
         public IEnumerable<TEntity> GetAll(int pageNumber, int pageSize)
         {
-            return Context.Set<TEntity>().ToList();
+            return Context.Set<TEntity>().Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
         }
 
         public void Add(TEntity entity)
