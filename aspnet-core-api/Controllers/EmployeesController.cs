@@ -1,11 +1,11 @@
-﻿using Api.Services.interfaces;
+﻿using System.Collections.Generic;
+using Api.Services.interfaces;
 using Api.Services.Models;
 using aspnet_core_api.Extensions;
 using aspnet_core_api.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
-using System.Collections.Generic;
 
 namespace aspnet_core_api.Controllers
 {
