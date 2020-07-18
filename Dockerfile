@@ -7,10 +7,13 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["aspnet-core-api.csproj", ""]
-RUN dotnet restore "./aspnet-core-api.csproj"
+COPY ["aspnet-core-api/aspnet-core-api.csproj", "aspnet-core-api/"]
+COPY ["Api.Entities/Api.Entities.csproj", "Api.Entities/"]
+COPY ["Api.Services/Api.Services.csproj", "Api.Services/"]
+COPY ["Api.Repository/Api.Repository.csproj", "Api.Repository/"]
+RUN dotnet restore "aspnet-core-api/aspnet-core-api.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/aspnet-core-api"
 RUN dotnet build "aspnet-core-api.csproj" -c Release -o /app/build
 
 FROM build AS publish
