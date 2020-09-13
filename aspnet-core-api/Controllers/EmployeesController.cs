@@ -30,7 +30,7 @@ namespace aspnet_core_api.Controllers
         [HttpGet]
         public IEnumerable<EmployeeModel> GetEmployees(int pageNumber = 1, int pageSize = 10)
         {
-            _logger.Debug($"Get employees: {pageNumber} - {pageSize}");
+            _logger.Debug("Get employees: {PageNumber} - {PageSize}", pageNumber, pageSize);
 
             return _employeeService.GetEmployees(pageNumber, pageSize);
         }
@@ -38,7 +38,7 @@ namespace aspnet_core_api.Controllers
         [HttpGet("employeeId")]
         public ActionResult<EmployeeModel> GetEmployee(int employeeId)
         {
-            _logger.Debug($"Get employee for id: {employeeId}");
+            _logger.Debug("Get employee for id {EmployeeId}", employeeId);
 
             if (employeeId == 0)
             {
@@ -55,7 +55,7 @@ namespace aspnet_core_api.Controllers
         [HttpPost]
         public IActionResult AddEmployee([FromBody] EmployeeModel employeeModel)
         {
-            _logger.Debug($"Add new employee : {employeeModel}");
+            _logger.Debug("Add new employee");
 
             var validationResult = _employeeValidator.Validate(employeeModel);
             if (!validationResult.IsValid)
@@ -71,7 +71,7 @@ namespace aspnet_core_api.Controllers
         [HttpPut]
         public void UpdateEmployee([FromBody] EmployeeModel employeeModel)
         {
-            _logger.Debug($"Update new employee : {employeeModel}");
+            _logger.Debug("Update new employee");
 
             _employeeService.UpdateEmployee(employeeModel);
         }
@@ -79,7 +79,7 @@ namespace aspnet_core_api.Controllers
         [HttpDelete("employeeId")]
         public IActionResult DeleteEmployee(int employeeId)
         {
-            _logger.Debug($"Delete employee : {employeeId}");
+            _logger.Debug("Delete employee for id {EmployeeId}", employeeId);
 
             if (employeeId == 0)
             {
