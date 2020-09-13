@@ -1,6 +1,5 @@
 ﻿using Api.Services.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Api.Services.interfaces
 {
@@ -10,10 +9,10 @@ namespace Api.Services.interfaces
 
         EmployeeModel GetEmployee(int employeeId);
 
-        Task AddEmployee(EmployeeModel employeeModel);
+        void AddEmployee(EmployeeModel employeeModel);
 
-        Task UpdateEmployee(EmployeeModel employeeModel);
+         void UpdateEmployee(EmployeeModel employeeModel);
 
-        Task DeleteEmployee(int employeeId);
+         void DeleteEmployee(int employeeId);
     }
 }

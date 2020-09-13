@@ -9,6 +9,7 @@ namespace Api.Services.Profiles
         public EmployeeProfile()
         {
             CreateMap<Employee, EmployeeModel>().ReverseMap();
+            CreateMap<Address, AddressModel>().ReverseMap();
         }
     }
 }

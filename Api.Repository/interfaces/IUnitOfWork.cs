@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace Api.Repository.interfaces
 {
@@ -7,6 +6,6 @@ namespace Api.Repository.interfaces
     {
         IEmployeeRepository Employees { get; }
 
-        Task SaveChangesAsync();
+        void SaveChanges();
     }
 }

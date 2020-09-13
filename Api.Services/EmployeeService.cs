@@ -3,6 +3,7 @@ using Api.Repository.interfaces;
 using Api.Services.interfaces;
 using Api.Services.Models;
 using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -34,16 +35,16 @@ namespace Api.Services
             return _mapper.Map<EmployeeModel>(employee);
         }
 
-        public async Task AddEmployee(EmployeeModel employeeModel)
+        public void AddEmployee(EmployeeModel employeeModel)
         {
             var employee = _mapper.Map<Employee>(employeeModel);
 
             _unitOfWork.Employees.Add(employee);
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
         }
 
-        public async Task UpdateEmployee(EmployeeModel employeeModel)
+        public void UpdateEmployee(EmployeeModel employeeModel)
         {
             var employee = _unitOfWork.Employees.Get(employeeModel.EmployeeId);
 
@@ -57,15 +58,15 @@ namespace Api.Services
             employee.Address.City = employeeModel.Address.City;
             employee.Address.Postcode = employeeModel.Address.Postcode;
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
         }
 
-        public async Task DeleteEmployee(int employeeId)
+        public void DeleteEmployee(int employeeId)
         {
             var employee = _unitOfWork.Employees.Get(employeeId);
             _unitOfWork.Employees.Remove(employee);
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
         }
     }
 }

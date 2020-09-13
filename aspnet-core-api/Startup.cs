@@ -33,7 +33,6 @@ namespace aspnet_core_api
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
             services.AddDbContext<EmployeesContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString"),

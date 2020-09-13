@@ -16,9 +16,9 @@ namespace Api.Repository
             Employees = new EmployeeRepository(_employeesContext);
         }
 
-        public async Task SaveChangesAsync()
+        public void SaveChanges()
         {
-            await _employeesContext.SaveChangesAsync();
+            _employeesContext.SaveChanges();
         }
 
         public void Dispose()
